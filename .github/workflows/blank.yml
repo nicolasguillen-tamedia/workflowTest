@@ -13,7 +13,7 @@ on:
           - Custom
       group:
         type: text
-#         required: ${{ contains(inputs.selection, "Custom") }}
+        required: ${{ contains(inputs.selection, 'Custom') }}
         description: "Specify tenant. Example: fuw, tagesanzeiger, baz"
 
 
