@@ -19,21 +19,21 @@ on:
 
 jobs:
   fuw:
-    if: ${{ contains(inputs.selection, "All") || (contains(inputs.selection, "Custom") && contains(inputs.text, "fuw")) }} 
+    if: ${{ contains(inputs.selection, "All") || (contains(inputs.selection, "Custom") && contains(inputs.group, "fuw")) }} 
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
         run: echo Hello, FuW!
   
   tagesanzeiger:
-    if: ${{ contains(inputs.selection, "All") || (contains(inputs.selection, "Custom") && contains(inputs.text, "tagesanzeiger")) }} 
+    if: ${{ contains(inputs.selection, "All") || (contains(inputs.selection, "Custom") && contains(inputs.group, "tagesanzeiger")) }} 
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
         run: echo Hello, Tagi!
   
   baz:
-    if: ${{ contains(inputs.selection, "All") || (contains(inputs.selection, "Custom") && contains(inputs.text, "baz")) }} 
+    if: ${{ contains(inputs.selection, "All") || (contains(inputs.selection, "Custom") && contains(inputs.group, "baz")) }} 
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
