@@ -1,0 +1,40 @@
+
+name: CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      selection:
+        type: choice
+        required: true
+        description: Select tenant group
+        options:
+          - All
+          - Custom
+      group:
+        type: text
+        required: ${{ contains(inputs.selection, "Custom") }}
+        description: "Specify tenant. Example: fuw, tagesanzeiger, baz"
+
+
+jobs:
+  fuw:
+    if: ${{ contains(inputs.selection, "All") || (contains(inputs.selection, "Custom") && contains(inputs.text, "fuw")) }} 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, FuW!
+  
+  tagesanzeiger:
+    if: ${{ contains(inputs.selection, "All") || (contains(inputs.selection, "Custom") && contains(inputs.text, "tagesanzeiger")) }} 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, Tagi!
+  
+  baz:
+    if: ${{ contains(inputs.selection, "All") || (contains(inputs.selection, "Custom") && contains(inputs.text, "baz")) }} 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, BaZ!
